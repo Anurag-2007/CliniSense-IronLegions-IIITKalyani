@@ -71,4 +71,4 @@ CliniSense runs as a Flask-based microservice. You can deploy it on:
 
 ---
 
-Let me know if you'd like a matching landing page, logo, or onboarding flow for CliniSense!
+
