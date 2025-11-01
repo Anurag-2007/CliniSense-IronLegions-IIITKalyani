@@ -79,8 +79,7 @@ CliniSense follows a multi-stage pipeline for deep contextual understanding:
 ## 📦 Deployment
 
 CliniSense runs as a Flask-based microservice. You can deploy it on:
-
-- 🐳 Docker  
+  
 - ☁️ Cloud platforms (AWS, GCP, Azure)  
 - 🖥️ Local servers for hospital intranets  
 
