@@ -31,25 +31,7 @@ CliniSense follows a multi-stage pipeline for deep contextual understanding:
 
 ---
 
-## 🧪 Sample Output
 
-```json
-{
-  "summary": "Patient presents with persistent cough, mild fever, and fatigue...",
-  "diagnoses": [
-    {
-      "condition": "Acute Bronchitis",
-      "confidence": "High",
-      "justification": "Symptoms align with viral bronchitis; no signs of pneumonia in notes."
-    },
-    {
-      "condition": "Seasonal Allergies",
-      "confidence": "Medium",
-      "justification": "Cough and fatigue may be allergy-related; no fever typically observed."
-    }
-  ]
-}
-```
 
 ---
 
@@ -80,7 +62,6 @@ CliniSense follows a multi-stage pipeline for deep contextual understanding:
 
 CliniSense runs as a Flask-based microservice. You can deploy it on:
 
-- 🐳 Docker  
 - ☁️ Cloud platforms (AWS, GCP, Azure)  
 - 🖥️ Local servers for hospital intranets  
 
@@ -88,7 +69,7 @@ CliniSense runs as a Flask-based microservice. You can deploy it on:
 
 ## 💡 Future Enhancements
 
-- 🔍 ICD-10 code mapping  
+- 🔍 OCR prescription reader
 - 🧬 Integration with lab results and imaging reports  
 - 📊 Dashboard for diagnosis trends and analytics  
 
