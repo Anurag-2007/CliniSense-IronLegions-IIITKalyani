@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prescription Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for(filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Prescription Note Analyzer</h1>
+
+    <textarea id="note" placeholder="Paste the prescription note here..." rows="8"></textarea>
+
+    <button id="analyzeBtn">Analyze</button>
+
+    <div id="loading" class="hidden">Analyzing…</div>
+
+    <div id="result" class="hidden">
+        <h2>Result</h2>
+        <p><strong>Summary:</strong> <span id="summary"></span></p>
+        <p><strong>Potential Diagnosis:</strong> <span id="diagnosis"></span></p>
+    </div>
+
+    <div id="error" class="hidden"></div>
+</div>
+
+<script>
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const noteInput   = document.getElementById('note');
+    const loading     = document.getElementById('loading');
+    const resultDiv   = document.getElementById('result');
+    const summarySpan = document.getElementById('summary');
+    const diagSpan    = document.getElementById('diagnosis');
+    const errorDiv    = document.getElementById('error');
+
+    analyzeBtn.addEventListener('click', async () => {
+        const note = noteInput.value.trim();
+        if (!note) {
+            showError('Please enter a prescription note.');
+            return;
+        }
+
+        hideAll();
+        loading.classList.remove('hidden');
+
+        try {
+            const resp = await fetch('/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ note })
+            });
+
+            const data = await resp.json();
+
+            if (!resp.ok) throw new Error(data.error || 'Server error');
+
+            summarySpan.textContent = data.summary;
+            diagSpan.textContent    = data.potential_diagnosis;
+            resultDiv.classList.remove('hidden');
+        } catch (err) {
+            showError(err.message);
+        } finally {
+            loading.classList.add('hidden');
+        }
+    });
+
+    function hideAll() {
+        resultDiv.classList.add('hidden');
+        errorDiv.classList.add('hidden');
+    }
+
+    function showError(msg) {
+        errorDiv.textContent = msg;
+        errorDiv.classList.remove('hidden');
+    }
+</script>
+</body>
+</html>
