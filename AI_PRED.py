@@ -125,8 +125,8 @@ def parse(truncated_json):
         raise
 
 
-api_key = os.environ.get("API_KEY")
-llm = OpenAI(model=LLM_MODEL, temperature=0.0, openai_api_key=api_key)
+key = os.environ.get("KEY")
+llm = OpenAI(model=LLM_MODEL, temperature=0.0, openai_api_key=key)
 def generate_summary(note_text: str) -> Dict:
 # 1. Chunk & index
     docs = load_clinical_data(note_text)
