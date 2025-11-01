@@ -17,6 +17,7 @@ from langchain.prompts import PromptTemplate
 from langchain.schema import Document
 import re
 import json
+import os
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 LLM_MODEL = "gpt-4o-mini"  # or your fine-tuned endpoint
@@ -124,8 +125,8 @@ def parse(truncated_json):
         raise
 
 
-
-llm = OpenAI(model=LLM_MODEL, temperature=0.0, openai_api_key="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")
+api_key = os.environ.get("API_KEY")
+llm = OpenAI(model=LLM_MODEL, temperature=0.0, openai_api_key=api_key)
 def generate_summary(note_text: str) -> Dict:
 # 1. Chunk & index
     docs = load_clinical_data(note_text)
