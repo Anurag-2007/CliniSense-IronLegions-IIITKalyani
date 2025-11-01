@@ -1,7 +1,3 @@
-Absolutely, Ayush! Here's a more engaging, visually structured, and developer-friendly version of your CliniSense README. It emphasizes clarity, benefits, and technical elegance while staying true to your architecture and goals:
-
----
-
 # 🩺 CliniSense  
 **AI-Powered Clinical Note Summarizer & Diagnostic Assistant**
 
